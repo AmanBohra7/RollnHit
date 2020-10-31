@@ -876,7 +876,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 142919063}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1533818289}
+        m_MethodName: OpenInfoMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &161458552
 GameObject:
   m_ObjectHideFlags: 0
@@ -2009,15 +2020,15 @@ RectTransform:
   m_GameObject: {fileID: 797800752}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.462365, z: 0.5}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 1276212193}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.95000005, y: 0.89730805}
-  m_AnchorMax: {x: 0.9896563, y: 0.9814641}
-  m_AnchoredPosition: {x: 0, y: 0.55200195}
-  m_SizeDelta: {x: 49, y: 50}
+  m_AnchorMin: {x: 0.95000005, y: 0.9017778}
+  m_AnchorMax: {x: 0.9927813, y: 0.9786111}
+  m_AnchoredPosition: {x: 0.22998047, y: -0.20996094}
+  m_SizeDelta: {x: 53.91234, y: 53.95172}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &797800754
 MonoBehaviour:
@@ -3894,6 +3905,7 @@ MonoBehaviour:
   infoGame: {fileID: 386069928}
   gamePaused: 0
   menuAwake: 0
+  infoMenuAwake: 0
 --- !u!4 &1574124105
 Transform:
   m_ObjectHideFlags: 0
@@ -4428,7 +4440,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 60
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cfd6d1b91a0f41742b7e3a35c1846750, type: 2}
   m_sharedMaterial: {fileID: 21336853221311050, guid: cfd6d1b91a0f41742b7e3a35c1846750,
@@ -4498,7 +4510,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1879849182}
-    characterCount: 2
+    characterCount: 1
     spriteCount: 0
     spaceCount: 0
     wordCount: 1

@@ -15,10 +15,22 @@ public class Collected : MonoBehaviour
   
     private void OnCollisionEnter(Collision other){
         if(gameObject.tag == "RED"){
-            Instantiate(redBreak,gameObject.transform.position,redBreak.transform.rotation);
+            Instantiate(redBreak,
+                new Vector3(
+                    gameObject.transform.position.x,
+                    gameObject.transform.position.y + 1f,
+                    gameObject.transform.position.z
+                ),
+                redBreak.transform.rotation);
             mangerInstance.AddScore(15 , "RED"); 
         }else{
-            Instantiate(blueBreak,gameObject.transform.position,blueBreak.transform.rotation);
+            Instantiate(blueBreak,
+                new Vector3(
+                    gameObject.transform.position.x,
+                    gameObject.transform.position.y + 1f,
+                    gameObject.transform.position.z
+                )
+                ,blueBreak.transform.rotation);
             mangerInstance.AddScore(20 , "BLUE");
         }
         mangerInstance.InstantiatePopupScore(gameObject.transform);

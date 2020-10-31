@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
 public class GameManger : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class GameManger : MonoBehaviour
     public GameObject popupStreak;
     public GameObject endgameObject;
 
-    public float timeLeft = 60.0f;
+    public float timeLeft = 61.0f;
 
     private bool gameOver = false;
 
@@ -41,18 +42,21 @@ public class GameManger : MonoBehaviour
         rollingSphere = GameObject.FindWithTag("Player"); 
         audioSource = gameObject.GetComponent<AudioSource>(); 
         menuInstance = MenuController.instance;
+        menuInstance.OpenInfoMenu();
     }
 
     void Update(){
-
+        
         if (Input.GetKeyDown(KeyCode.Escape) && gamePaused == false){
             menuInstance.Menu("Pause","open");
-            //Time.timeScale = 0f;
+            StartCoroutine(waitAndPause());
+            audioSource.Pause();
             gamePaused = true;
         }else if(Input.GetKeyDown(KeyCode.Escape) && gamePaused == true){
             menuInstance.Menu("Pause","close");
-            //Time.timeScale = 1f;
+            Time.timeScale = 1f;
             gamePaused = false;
+            audioSource.Play();
         }
 
         if(!gameOver) timeLeft -= Time.deltaTime;
@@ -63,7 +67,25 @@ public class GameManger : MonoBehaviour
         scorePro.text = score.ToString();
     }
 
-   public string GetStreak(){ return streak.ToString(); }
+    IEnumerator waitAndPause()
+    {
+        yield return new WaitForSeconds(.5f);
+        Time.timeScale = 0f;
+    }
+
+    public void GamePaused(){ 
+        audioSource.Pause();
+        StartCoroutine(waitAndPause());
+        gamePaused = true;
+    }
+
+    public void GameUnPaused(){
+        audioSource.Play();
+        Time.timeScale = 1f;
+        gamePaused = false;
+    }
+
+    public string GetStreak(){ return streak.ToString(); }
 
     public void AddScore(int point , string color){
         if( lastHit == color ){

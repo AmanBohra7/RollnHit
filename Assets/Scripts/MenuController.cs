@@ -10,20 +10,26 @@ public class MenuController : MonoBehaviour
     public GameObject pauseGame;
     public GameObject infoGame;
 
+    [HideInInspector]
     public bool gamePaused = false;
-
+    [HideInInspector]
     public bool menuAwake = false;
+    [HideInInspector]
+    public bool infoMenuAwake = false;
 
     void Awake(){
         if(instance) Destroy(this);
         else instance = this;
+        managerInstance = GameManger.instance; 
     }
 
     void Update(){
-        gamePaused = managerInstance.gamePaused;
+        menuAwake = managerInstance.gamePaused;
     }
 
-    void Start(){ managerInstance = GameManger.instance; }
+    void Start(){ 
+        managerInstance = GameManger.instance; 
+    }
 
     public void Menu(string menuName,string action){
         if(menuName == "End"){
@@ -49,4 +55,20 @@ public class MenuController : MonoBehaviour
         LeanTween.scale(obj.GetComponent<RectTransform>(),new Vector3(0,0,0), .2f);
         LeanTween.scale(obj.GetComponent<RectTransform>(),new Vector3(0.004f,0.004f,0.004f), .1f).setDelay(.3f);
     }
+
+    public void OpenInfoMenu(){
+        if(menuAwake == false && infoMenuAwake == false){
+            OpenMenu(infoGame);
+            managerInstance.GamePaused();
+            infoMenuAwake = true;
+        }else{
+            if(infoMenuAwake == true){
+                CloseMenu(infoGame);
+                managerInstance.GameUnPaused();
+                infoMenuAwake = false;
+            }
+        }        
+    }
+
+
 }
