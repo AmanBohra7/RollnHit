@@ -8,6 +8,9 @@ public class RollingBallController : MonoBehaviour
 
     public float rollingSpeed = 1.8f;
   
+
+    public bool gamePaused = false;
+
     void Start(){
         rb = GetComponent<Rigidbody>();
     }

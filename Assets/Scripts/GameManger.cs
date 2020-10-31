@@ -8,7 +8,9 @@ public class GameManger : MonoBehaviour
 
     public static GameManger instance;
 
-    public GameObject popupScorePrefab;
+    private MenuController menuInstance;
+
+    public GameObject popupStreak;
     public GameObject endgameObject;
 
     public float timeLeft = 60.0f;
@@ -24,6 +26,8 @@ public class GameManger : MonoBehaviour
     private int countCollection = 0;
 
     private string lastHit = "  ";
+    
+    public bool gamePaused = false;
 
     private GameObject rollingSphere;
     private AudioSource audioSource;
@@ -36,11 +40,23 @@ public class GameManger : MonoBehaviour
     void Start(){  
         rollingSphere = GameObject.FindWithTag("Player"); 
         audioSource = gameObject.GetComponent<AudioSource>(); 
+        menuInstance = MenuController.instance;
     }
 
     void Update(){
+
+        if (Input.GetKeyDown(KeyCode.Escape) && gamePaused == false){
+            menuInstance.Menu("Pause","open");
+            //Time.timeScale = 0f;
+            gamePaused = true;
+        }else if(Input.GetKeyDown(KeyCode.Escape) && gamePaused == true){
+            menuInstance.Menu("Pause","close");
+            //Time.timeScale = 1f;
+            gamePaused = false;
+        }
+
         if(!gameOver) timeLeft -= Time.deltaTime;
-        if(timeLeft <= 0){
+        if(timeLeft <= 0 && gameOver == false ){
              GameOver();
          }
         if(!gameOver)   counterPro.text = ((int)timeLeft).ToString();
@@ -70,12 +86,12 @@ public class GameManger : MonoBehaviour
     }
 
     public void InstantiatePopupScore(Transform trans){
-        Instantiate(popupScorePrefab,trans.position,popupScorePrefab.transform.rotation);
+        Instantiate(popupStreak,trans.position,popupStreak.transform.rotation);
     }
 
     private void GameOver(){
         Debug.Log("GameOver");
-        endgameObject.SetActive(true);
+        menuInstance.Menu("End","open");
         endgameObject.GetComponent<EndGame>().UpdateScore(score,(int)timeLeft);
         rollingSphere.SetActive(false);
         StartCoroutine(decrementPower());

@@ -58,7 +58,7 @@ public class RandomSpwan : MonoBehaviour
                 spwanCount += 1;
                 currentCount += 1;
                 GameObject newObject;
-                if(spwanCount <= 6){
+                if(spwanCount <= 5){
                     newObject = Instantiate(redCube,newPose,redCube.transform.rotation);
                 }
                 else{
