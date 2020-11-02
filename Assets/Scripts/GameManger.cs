@@ -108,7 +108,8 @@ public class GameManger : MonoBehaviour
     }
 
     public void InstantiatePopupScore(Transform trans){
-        Instantiate(popupStreak,trans.position,popupStreak.transform.rotation);
+        GameObject instObject = Instantiate(popupStreak,trans.position,popupStreak.transform.rotation);
+        instObject.GetComponent<PopupScore>().PopTheScore((float)streak);
     }
 
     private void GameOver(){

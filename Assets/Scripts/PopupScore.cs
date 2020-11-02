@@ -14,14 +14,18 @@ public class PopupScore : MonoBehaviour
     {
         gameManagerInstance = GameManger.instance;
         Debug.Log("Heres the popup!");
-        PopTheScore();
+        // PopTheScore(1f);
     }
 
-    private void PopTheScore(){
-        popscoreText.text = "X"+gameManagerInstance.GetStreak();
+    public void PopTheScore(float x ){
+        popscoreText.text = "X"+(int)x;
         LeanTween.moveY(gameObject.GetComponent<RectTransform>(), 4.5f, .5f).setEaseOutCirc();
-        LeanTween.scale(gameObject.GetComponent<RectTransform>(), gameObject.GetComponent<RectTransform>().localScale*1.5f, .5f)
+        LeanTween.scale(gameObject.GetComponent<RectTransform>(), gameObject.GetComponent<RectTransform>().localScale*x, .5f)
                     .setOnComplete(DestroyMe);
+    }
+
+    public void TestFunction(){
+        Debug.Log("Test function called!");
     }
 
     private void DestroyMe(){
