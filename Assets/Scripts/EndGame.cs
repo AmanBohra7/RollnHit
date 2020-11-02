@@ -18,7 +18,7 @@ public class EndGame : MonoBehaviour
 
     IEnumerator updateWithLeftTime(int time){
         while(time > 0){
-            yield return new WaitForSeconds(.2f);
+            yield return new WaitForSeconds(.17f);
             animateScore();
             score += 1;
             time -= 1;

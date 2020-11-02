@@ -10,11 +10,9 @@ public class PopupScore : MonoBehaviour
 
     private GameManger gameManagerInstance;
 
-    void Start()
-    {
+    void Start(){
         gameManagerInstance = GameManger.instance;
-        Debug.Log("Heres the popup!");
-        // PopTheScore(1f);
+
     }
 
     public void PopTheScore(float x ){
@@ -23,11 +21,7 @@ public class PopupScore : MonoBehaviour
         LeanTween.scale(gameObject.GetComponent<RectTransform>(), gameObject.GetComponent<RectTransform>().localScale*x, .5f)
                     .setOnComplete(DestroyMe);
     }
-
-    public void TestFunction(){
-        Debug.Log("Test function called!");
-    }
-
+    
     private void DestroyMe(){
         Destroy(gameObject);
     }

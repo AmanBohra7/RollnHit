@@ -878,7 +878,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1533818289}
-        m_MethodName: OpenInfoMenu
+        m_MethodName: TriggerInfoMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2105,7 +2105,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 797800754}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1533818289}
+        m_MethodName: TriggerPauseMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &855956416
 GameObject:
   m_ObjectHideFlags: 0
@@ -2186,7 +2197,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1533818289}
-        m_MethodName: OpenInfoMenu
+        m_MethodName: TriggerInfoMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3878,9 +3889,9 @@ MonoBehaviour:
     type: 3}
   endgameObject: {fileID: 1134649224}
   timeLeft: 60
+  gameOver: 0
   scorePro: {fileID: 1202045847}
   counterPro: {fileID: 1879849182}
-  gamePaused: 0
 --- !u!82 &1532273844
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4032,6 +4043,9 @@ MonoBehaviour:
   gamePaused: 0
   menuAwake: 0
   infoMenuAwake: 0
+  pauseMenuAwake: 0
+  endMenuAwake: 0
+  gameEnd: 0
 --- !u!4 &1574124105
 Transform:
   m_ObjectHideFlags: 0
@@ -4152,7 +4166,7 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
+      key0: {r: 0.6037736, g: 0.56674975, b: 0.56674975, a: 1}
       key1: {r: 1, g: 1, b: 1, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
@@ -4209,7 +4223,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1574217321}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: e59e213c7c5dd8148a2f2c1b7de77726, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3

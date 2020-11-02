@@ -27,7 +27,7 @@ public class RandomSpwan : MonoBehaviour
     {
         // center = gameControllerObject.transform.position;
         center = spwanArea.transform.position;
-        Debug.Log("Size: "+spwanArea.GetComponent<Collider>().bounds.size.x);
+        // Debug.Log("Size: "+spwanArea.GetComponent<Collider>().bounds.size.x);
         // size   = new Vector3(5.5f,0.0f,8f);
         size = new Vector3(
             spwanArea.GetComponent<Collider>().bounds.size.x / 2,
