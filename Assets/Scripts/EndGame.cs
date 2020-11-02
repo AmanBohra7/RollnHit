@@ -23,8 +23,9 @@ public class EndGame : MonoBehaviour
             score += 1;
             time -= 1;
             audioSource.Play();
+            totalScore.GetComponentInChildren<ParticleSystem>().Play();
         }
-
+        totalScore.GetComponentInChildren<ParticleSystem>().Stop();
     }
 
     void Start() { 
