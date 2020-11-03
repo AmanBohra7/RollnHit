@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MenuController : MonoBehaviour
 {
@@ -16,7 +17,11 @@ public class MenuController : MonoBehaviour
     [HideInInspector]
     public bool infoMenuAwake = false, pauseMenuAwake = false, endMenuAwake = false;
     [HideInInspector]
-    public bool gameEnd = false;
+    public bool gameEnd = false , mute = false;
+
+    public GameObject muteObject;
+    public Sprite muteSprite;
+    public Sprite unmuteSprite;
 
     void Awake(){
         if(instance) Destroy(this);
@@ -87,6 +92,18 @@ public class MenuController : MonoBehaviour
         if(managerInstance.gameOver){
             OpenMenu(endGame);
             menuAwake = true;
+        }
+    }
+
+    public void TriggerMuteOption(){
+        if(mute){
+            managerInstance.UnmuteGame();
+            muteObject.GetComponent<Image>().sprite = unmuteSprite;
+            mute = false;
+        }else{
+            managerInstance.MuteGame();
+            muteObject.GetComponent<Image>().sprite = muteSprite;
+            mute = true;
         }
     }
 

@@ -78,6 +78,10 @@ public class GameManger : MonoBehaviour
         }
     }
 
+    public void MuteGame() { audioSource.volume = 0f;}
+
+    public void UnmuteGame() { audioSource.volume = 1f; }
+
     public void InstantiatePopupScore(Transform trans){
         GameObject instObject = Instantiate(popupStreak,trans.position,popupStreak.transform.rotation);
         instObject.GetComponent<PopupScore>().PopTheScore((float)streak);
