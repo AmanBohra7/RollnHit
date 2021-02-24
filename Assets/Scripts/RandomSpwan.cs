@@ -34,6 +34,9 @@ public class RandomSpwan : MonoBehaviour
             0.0f,
             spwanArea.GetComponent<Collider>().bounds.size.z / 2
         );
+        Debug.Log("Size: "+size);
+        Vector3 objectSize = Vector3.Scale(transform.localScale, spwanArea.GetComponent<MeshFilter>().mesh.bounds.size);
+        Debug.Log("Test: "+spwanArea.GetComponent<MeshFilter>().mesh.bounds.size);
         lstPose = new Vector3(0f,spwanArea.transform.position.y,0f);
         SpwanObjects();
     }
@@ -43,7 +46,7 @@ public class RandomSpwan : MonoBehaviour
             float rdm_x = Random.Range(center.x-size.x  , center.x+size.x );
             float rdm_z = Random.Range(center.z-size.z  , center.z+size.z );
             //Debug.Log(rdm_x);
-            Vector3 newPose = new Vector3(rdm_x,center.y,rdm_z);
+            Vector3 newPose = new Vector3(rdm_x,center.y+0.936f,rdm_z);
             currentCount += 1;
             foreach(Transform i in houses){
                 //Debug.Log("Try: "+currentCount+" distance: "+Mathf.Abs(i.position.x - newPose.x));

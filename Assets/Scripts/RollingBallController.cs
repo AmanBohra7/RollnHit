@@ -18,13 +18,13 @@ public class RollingBallController : MonoBehaviour
         // Vector3 moveForwad = new Vector3(-rollingSpeed,0.0f,0.0f);
         // rb.AddForce(moveForwad);
 
-        if(Application.platform == RuntimePlatform.WindowsEditor){
-            Debug.Log("Widows Build!");
-        }
+        // if(Application.platform == RuntimePlatform.WindowsEditor){
+        //     Debug.Log("Widows Build!");
+        // }
 
-        if(Application.platform == RuntimePlatform.Android){
-            Debug.Log("Android BUID");
-        }
+        // if(Application.platform == RuntimePlatform.Android){
+        //     Debug.Log("Android BUID");
+        // }
 
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
